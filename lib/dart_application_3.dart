@@ -174,6 +174,7 @@ void main(){
     print("Its cool.");
   }
 
+
   //ข้อที่ 30
   number = 5;
   do {
