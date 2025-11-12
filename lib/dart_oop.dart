@@ -1,197 +1,358 @@
 import 'dart:io';
+import 'dart:math';
 
-void main() {
-  //ข้อที่ 1
-  print("ข้อที่ 1");
-  List<String> animals = ["Tiger", "Lion", "Cat"];
-  print(animals[1]);
-
-  //ข้อที่ 2
-  print("ข้อที่ 2");
-  animals = ["Tiger", "Lion", "Cat"];
-  animals.add("Dog");
-  print(animals);
-
-  //ข้อที่ 3
-  print("ข้อที่ 3");
-  animals = ["Tiger", "Lion", "Cat", "Dog"];
-  print(animals.length);
-
-  //ข้อที่ 4
-  print("ข้อที่ 4");
-  Map<String, int> studentScore = {"math": 90, "english": 85};
-  print(studentScore["math"]);
-
-  //ข้อที่ 5
-  print("ข้อที่ 5");
-  Set<int> uniqueNumbers = {10, 20, 10, 30, 20};
-  print(uniqueNumbers);
-
-  //ข้อที่ 6
-  print("ข้อที่ 6 ");
-  List<String> colors = ["Red", "Green", "Blue"];
-  colors.removeAt(1);
-  print(colors);
-
-  //ข้อที่ 7
-  print("ข้อที่ 7");
-  List<int> numbers = [5, 10, 15, 10];
-  print(numbers.indexOf(10));
-
-  //ข้อที่ 8
-  print("ข้อที่ 8");
-  List<String> names = [];
-  names.add("John");
-  // names.add(123); // บรรทัดนี้จะเกิด Error เพราะ 123 ไม่ใช่ String
-
-  print(names);
-
-  //ข้อที่ 9
-  print("ข้อที่ 9");
-  animals = ["Tiger", "Lion", "Cat", "Dog"];
-  for (var animal in animals) {
-    print("Animal: $animal");
-  }
-
-  //ข้อที่ 10
-  print("ข้อที่ 10");
-  studentScore = {"math": 90, "english": 85};
-  print(studentScore.containsKey("science"));
-
-  //ข้อที่ 11
-  print("ข้อที่ 11");
-  List<int> listA = [1, 2];
-  List<int> listB = [3, 4];
-  List<int> combined = [0, ...listA, ...listB, 5];
-  print(combined);
-
-  //ข้อที่ 12
-  print("ข้อที่ 12");
-  bool isPremiumUser = false;
-
-  List<String> features = [
-    "Basic Feature",
-    if (isPremiumUser) "Premium Feature",
-  ];
-
-  print(features); // ผลลัพธ์: [Basic Feature]
-
-  //ข้อที่ 13
-  print("ข้อที่ 13");
-  List<int> original = [1, 2, 3];
-
-  List<int> squares = [for (var number in original) number * number];
-
-  print(squares); // ผลลัพธ์: [1, 4, 9]
-
-  //ข้อที่ 14
-  print("ข้อที่ 14");
-  studentScore = {"math": 90, "english": 85};
-
-  studentScore.forEach((key, value) {
-    print("Subject: $key, Score: $value");
-  });
-  //ข้อที่ 15
-  /*Set ใน Dart จะเก็บ เฉพาะค่าที่ไม่ซ้ำกัน (unique) โดยอัตโนมัติ ดังนั้นแม้เราจะใส่ [10, 20, 10, 30, 20] 
-ซึ่งมี 5 ค่า แต่ค่าซ้ำ เช่น 10 และ 20 จะถูกตัดออก ทำให้ Set สุดท้ายมีเพียง 3 สมาชิก คือ {10, 20, 30} */
-
-  //ตอนที่ 2
-  //ข้อที่ 1
-  print("ข้อที่ 1");
-  void printMyName() {
-    print("ชื่อเล่นของผมคือ บุ๊ค");
-  }
-    printMyName();
-
-    int getCurrentYear() {
-  return DateTime.now().year;
+// === Functions ===
+void printMyName() {
+  print("My nickname is Pop");
 }
-  //ข้อที่ 2
-  print("ข้อที่ 2");
-  int year = getCurrentYear();
-  print(year);
 
-  //ข้อที่ 3
-  int multiply(int a, int b) {
+int getCurrentYear() {
+  return 2024;
+}
+
+int multiply(int a, int b) {
   return a * b;
 }
-  print("ข้อที่ 3");
-  int result = multiply(5, 3);
-  print(result);
 
-  //ข้อที่ 4
-  void sayGoodbye() => print("Goodbye!");
-  print("ข้อที่ 4");
-  sayGoodbye();
+void sayGoodbye() => print("Goodbye!");
 
-
-  //ข้อที่ 5
-  print("ข้อที่ 5");
-  result = multiply(10, 5);
-  print(result);
-
-  //ข้อที่ 6
-  void showUserDetails({String? name, int? age}) {
+void showUserDetails({String? name, int? age}) {
   print("Name: $name, Age: $age");
 }
 
-  print("ข้อที่ 6");
-  showUserDetails(name: "Book", age: 16);
-
-  //ข้อที่ 7
-    print("ข้อที่ 7");
-  showUserDetails(age: 30, name: "David");
-
-  //ข้อที่ 8
-  void greet({required String name, String greeting = "Hello"}) {
+void greet({required String name, String greeting = "Hello"}) {
   print("$greeting, $name");
 }
-  print("ข้อที่ 8");
-  greet(name: "Alice");
-  greet(name: "Bob", greeting: "Hi");
 
-  //ข้อที่ 9
-  /*void showUserDetails({required String name, int? age}) {
+void showUserDetailsRequired({required String name, int? age}) {
   print("Name: $name, Age: $age");
 }
-  print("ข้อที่ 9");
-  showUserDetails(name: "David", age: 30); */
 
-  //ข้อที่ 10
-  print("ข้อที่ 10");
-  numbers = [1, 2, 3];
-  
-  numbers.forEach((number) {
-    print("Number: $number");
-  });
+bool isEven(int number) => number % 2 == 0;
 
-  //ข้อที่ 11
-  bool isEven(int number) => number % 2 == 0;
-
-  print("ข้อที่ 11");
-  print(isEven(4)); // true
-  print(isEven(7)); // false
-
-  //ข้อที่ 12
-  void logMessage(String message, [String level = "INFO"]) {
+void logMessage(String message, [String level = "INFO"]) {
   print("[$level] $message");
 }
 
-  print("ข้อที่ 12");
-  logMessage("Error found");
-  logMessage("Critical error", "ERROR");
-
-  //ข้อที่ 13
-  void processNumbers(List<int> list, Function(int) action) {
+void processNumbers(List<int> list, Function(int) action) {
   for (var number in list) {
     action(number);
   }
 }
 
-  print("ข้อที่ 13");
-  numbers = [1, 2, 3];
-  processNumbers(numbers, (n) => print(n * 2)); // ตัวอย่างการใช้งาน
-
-  //ข้อที่ 14
+void printSquare(int n) {
+  print("Square of $n is ${n * n}");
 }
 
+// === OOP Part 1 ===
+class Car {
+  String? color;
+  int? year;
+  static const int numberOfWheels = 4;
+
+  void drive() {
+    print("Driving the $color car...");
+  }
+}
+
+class Book {
+  final String title;
+  final int pages;
+  Book({required this.title, required this.pages});
+}
+
+class MathHelper {
+  static int add(int a, int b) => a + b;
+}
+
+class User {
+  String username;
+  User(this.username);
+  User.guest() : username = "Guest";
+}
+
+class Circle {
+  final double radius;
+  Circle(this.radius);
+  double get area => pi * radius * radius;
+}
+
+class BankAccount {
+  double _balance = 0;
+  set deposit(double amount) {
+    if (amount > 0) {
+      _balance += amount;
+    }
+  }
+
+  double get balance => _balance;
+}
+
+class DatabaseConnection {
+  static int connectionCount = 0;
+  DatabaseConnection() {
+    connectionCount++;
+  }
+}
+
+// === OOP Part 2 ===
+class Vehicle {
+  void move() {
+    print("Moving...");
+  }
+}
+
+class Car2 extends Vehicle {
+  @override
+  void move() {
+    print("Driving the car...");
+  }
+}
+
+enum TrafficLight {
+  red,
+  yellow,
+  green
+}
+
+mixin Flyer {
+  void fly() {
+    print("I am flying!");
+  }
+}
+
+class Bird with Flyer {}
+
+class Person {
+  String name;
+  Person(this.name);
+}
+
+class Student extends Person {
+  int studentId;
+  Student(String name, this.studentId) : super(name);
+}
+
+abstract class Database {
+  void connect();
+}
+
+class MySQLDatabase extends Database {
+  @override
+  void connect() {
+    print("Connecting to MySQL...");
+  }
+}
+
+abstract class Logger {
+  void log(String message);
+}
+
+class ConsoleLogger implements Logger {
+  @override
+  void log(String message) {
+    print("LOG: $message");
+  }
+}
+
+class Animal {
+  void eat() {
+    print("Animal is eating.");
+  }
+}
+
+class Dog extends Animal {
+  @override
+  void eat() {
+    super.eat();
+    print("Dog is eating bones.");
+  }
+}
+
+mixin Walker {
+  void walk() {
+    print("Walking...");
+  }
+}
+
+mixin Swimmer {
+  void swim() {
+    print("Swimming...");
+  }
+}
+
+class Duck with Walker, Swimmer {}
+
+void checkLight(TrafficLight light) {
+  switch (light) {
+    case TrafficLight.red:
+      print("STOP");
+      break;
+    case TrafficLight.yellow:
+      print("WAIT");
+      break;
+    case TrafficLight.green:
+      print("GO");
+      break;
+  }
+}
+
+abstract class Shape {
+  String color;
+  Shape(this.color);
+  double getArea();
+}
+
+class CircleShape extends Shape {
+  double radius;
+  CircleShape(this.radius, String color) : super(color);
+
+  @override
+  double getArea() {
+    return pi * radius * radius;
+  }
+}
+
+// === MAIN PROGRAM ===
+void main() {
+  // Collections
+  print("\n=== Collections ===");
+  print("\nข้อที่ 1");
+  List<String> animals = ["Tiger", "Lion", "Cat"];
+  print(animals[1]);
+
+  print("\nข้อที่ 2");
+  animals.add("Dog");
+  print(animals);
+
+  print("\nข้อที่ 3");
+  print("จำนวนสมาชิกใน List animals คือ: ${animals.length}");
+
+  print("\nข้อที่ 4");
+  Map<String, int> studentScore = {"math": 90, "english": 85};
+  print("คะแนนวิชา math คือ: ${studentScore["math"]}");
+
+  print("\nข้อที่ 5");
+  Set<int> uniqueNumbers = Set<int>.from([10, 20, 10, 30, 20]);
+  print("ค่าใน Set uniqueNumbers คือ: $uniqueNumbers");
+
+  print("\nข้อที่ 6");
+  List<String> colors = ["Red", "Green", "Blue"];
+  print("List colors ก่อนลบ: $colors");
+  colors.removeAt(1);
+  print("List colors หลังลบ: $colors");
+
+  print("\nข้อที่ 7");
+  List<int> numbers = [5, 10, 15, 10];
+  int index = numbers.indexOf(10);
+  print("เลข 10 อยู่ที่ index: $index");
+
+  print("\nข้อที่ 8");
+  List<String> names = [];
+  names.add("John");
+  print("หลังเพิ่ม String: $names");
+
+  print("\nข้อที่ 9");
+  for (String animal in animals) {
+    print("Animal: $animal");
+  }
+
+  print("\nข้อที่ 10");
+  bool hasScience = studentScore.containsKey("science");
+  print("studentScore มี key 'science' หรือไม่: $hasScience");
+
+  print("\nข้อที่ 11");
+  List<int> listA = [1, 2];
+  List<int> listB = [3, 4];
+  List<int> combined = [0, ...listA, ...listB, 5];
+  print("Combined list: $combined");
+
+  print("\nข้อที่ 12");
+  bool isPremiumUser = false;
+  List<String> features = ["Basic Feature", if (isPremiumUser) "Premium Feature"];
+  print("Available features: $features");
+
+  print("\nข้อที่ 13");
+  List<int> original = [1, 2, 3];
+  List<int> squares = [for (int number in original) number * number];
+  print("Squares: $squares");
+
+  print("\nข้อที่ 14");
+  studentScore.forEach((subject, score) {
+    print("Subject: $subject, Score: $score");
+  });
+
+  print("\nข้อที่ 15");
+  print("อธิบาย Set ในข้อ 5:");
+  print("Set เป็นโครงสร้างข้อมูลที่เก็บเฉพาะค่าที่ไม่ซ้ำกัน");
+  print("เมื่อใส่ข้อมูล [10, 20, 10, 30, 20] ลงใน Set");
+  print("- 10 ตัวที่สองถูกละทิ้งเพราะซ้ำกับ 10 ตัวแรก");
+  print("- 20 ตัวที่สองถูกละทิ้งเพราะซ้ำกับ 20 ตัวแรก");
+  print("จึงเหลือเพียง 3 ค่าที่ไม่ซ้ำกันคือ [10, 20, 30]");
+
+  // === Functions ===
+  print("\n=== Functions ===");
+  printMyName();
+  int year = getCurrentYear();
+  print("Current year: $year");
+  int result = multiply(10, 5);
+  print("10 x 5 = $result");
+  sayGoodbye();
+  showUserDetails(name: "David", age: 30);
+  greet(name: "Alice");
+  greet(name: "Bob", greeting: "Hi");
+  showUserDetailsRequired(name: "John", age: 25);
+  print("Is 4 even? ${isEven(4)}");
+  logMessage("Error found");
+  logMessage("Critical error", "ERROR");
+  processNumbers([1, 2, 3], printSquare);
+  processNumbers([10, 20], (number) => print("Value: $number"));
+
+  // === OOP Part 1 ===
+  print("\n=== OOP Part 1 ===");
+  Car myCar2 = Car();
+  myCar2.color = "Red";
+  myCar2.drive();
+  print("Number of wheels: ${Car.numberOfWheels}");
+  Book myBook = Book(title: "Dart Basics", pages: 200);
+  print("Book: ${myBook.title}, Pages: ${myBook.pages}");
+  int sum = MathHelper.add(15, 30);
+  print("15 + 30 = $sum");
+  User guestUser = User.guest();
+  print("Username: ${guestUser.username}");
+  Circle circle = Circle(5.0);
+  print("Circle area: ${circle.area}");
+  BankAccount myAccount = BankAccount();
+  myAccount.deposit = 100;
+  myAccount.deposit = -50;
+  print("Balance: ${myAccount.balance}");
+  DatabaseConnection();
+  DatabaseConnection();
+  DatabaseConnection();
+  print("Total connections: ${DatabaseConnection.connectionCount}");
+
+  // === OOP Part 2 ===
+  print("\n=== OOP Part 2 ===");
+  Car2 myCar = Car2();
+  myCar.move();
+  var light = TrafficLight.red;
+  print("Traffic light: $light");
+  Bird bird = Bird();
+  bird.fly();
+  Student student = Student("John", 12345);
+  print("Student: ${student.name}, ID: ${student.studentId}");
+  MySQLDatabase mysql = MySQLDatabase();
+  mysql.connect();
+  ConsoleLogger logger = ConsoleLogger();
+  logger.log("Test message");
+  Dog dog = Dog();
+  dog.eat();
+  Duck duck = Duck();
+  duck.walk();
+  duck.swim();
+  checkLight(TrafficLight.red);
+  checkLight(TrafficLight.yellow);
+  checkLight(TrafficLight.green);
+  CircleShape circleShape = CircleShape(5.0, "Blue");
+  print("Circle area: ${circleShape.getArea()}, Color: ${circleShape.color}");
+}
